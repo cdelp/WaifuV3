@@ -1,0 +1,19 @@
+
+/*
+Cynthia Okuno
+styles for JSF 
+
+Note: Many of the JSF functions were resistant to CSS, so I had to style it manually. 
+Basically all JSF called objects would break the css. */
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: Comic Sans MS, cursive, sans-serif; 
+    text-align: center; 
+    background: url(button/polkadot.jpg) repeat;
+}
+
+#stuff{
+    background-color: black;
+}

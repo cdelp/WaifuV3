@@ -1,0 +1,48 @@
+<!--
+Cynthia Okuno
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <head>            
+        <h:form style = "position: relative;text-align: 
+                center">
+            <h:commandButton  action="index" image ="button/banner.png"/>
+        </h:form>   
+    </head>
+
+    <body style = "    font-family: Comic Sans MS, cursive, sans-serif; 
+          text-align: center; 
+          background: url(button/polkadot.jpg) repeat;">        
+
+        <h1><h:outputText escape="false" value="#{UserNumberBean.response}"/></h1>
+
+        <div id  ="stuff" style = "padding-left: 45%; position: relative">
+            <div id="hair" style ="position: absolute;   z-index: 3;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserHair()}" style = "border: 3px solid black; " />
+            </div>
+            <div id="eyes" style ="position: absolute;  z-index: 4;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserEyes()}" style = "border: 3px solid black; " />
+            </div>
+            <div id="outfit" style ="position: absolute; z-index: 2" >
+                <h:graphicImage value ="#{UserNumberBean.getUserOutfit()}" style = "border: 3px solid black; "/>
+            </div>
+            <div id="faces" style ="position: absolute;  z-index: 1" >
+                <h:graphicImage value ="#{UserNumberBean.getUserFace()}" style = "border: 3px solid black; "/>
+            </div>
+            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+
+
+        </div>
+
+        <h:form  style =" padding-top: 5%;">
+            <h:commandButton  action="index" image ="button/home.png"/>
+        </h:form>   
+
+    </body>
+</html>

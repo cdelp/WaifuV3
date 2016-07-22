@@ -1,0 +1,142 @@
+<!--
+Katriel Chiu
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <head>            
+
+        <h:form style =" text-align: center;">
+            <h:commandButton  action="index" image ="button/1.png"/>
+        </h:form>   
+    </head>
+    <!--link href="css/stylesheet.css" rel="stylesheet" type="text/css" /-->
+
+    <!-- The JSF stuff wouldn't fomat properly with CSS.. -->
+    <body style = "    font-family: Comic Sans MS, cursive, sans-serif; 
+          text-align: center; 
+          background: url(button/polkadot.jpg) repeat;">
+
+        <!-- Sets default "face" which is just the body -->
+        <div id  ="stuff" style = "text-align:center; left: 1150px; top: 150px; position: relative;  padding-right: 30%; padding-top: 3%">
+            #{UserNumberBean.setUserFace(2)}
+
+            <!-- Dynamically grabs hair/eyes/outfit/face as user changes it -->
+            <div id="hair" style ="position: absolute; left: 0px; top: 0px;   z-index: 3;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserHair()}" width = "244" height = "288" style = "border: 3px solid black; "/>
+            </div>
+
+            <div id="eyes" style ="position: absolute; left: 0px; top: 0px;  z-index: 4;" >
+
+                <h:graphicImage value ="#{UserNumberBean.getUserEyes()}" width = "244" height = "288" style = "border: 3px solid black"/>
+            </div>
+
+            <div id="outfit" style ="position: absolute; left: 0px; top: 0px; z-index: 2" >
+                <h:graphicImage value ="#{UserNumberBean.getUserOutfit()}" width = "244" height = "288" style = "border: 3px solid black"/>
+            </div>
+
+            <div id="faces" style ="position: absolute; left: 0px; top: 0px; z-index: 1" >
+                <h:graphicImage value ="#{UserNumberBean.getUserFace()}" width = "244" height = "288" style = "border: 3px solid black;"/>
+            </div>
+        </div>
+
+
+        <!-- Long hair selection -->
+        <h:form style = "background-color: white;width: 680px; border: 3px solid black; position: relative; left: 18%">
+
+            <div id="hairs1" style =" position: relative;">
+                <h:commandLink action ="#{UserNumberBean.setUserHair(3)}">
+                    <img src= "hair/3.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(1)}">
+                    <img src= "hair/1.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(2)}">
+                    <img src= "hair/2.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(4)}">
+                    <img src= "hair/4.png" />
+                </h:commandLink>
+
+            </div> 
+        </h:form>
+
+        <br></br>
+
+        <!-- Short hair selection -->
+        <h:form style = "background-color: white;width: 425px; border: 3px solid black; position: relative; left: 18%">
+            <div id="hairs2" style ="position: relative">
+                <h:commandLink action ="#{UserNumberBean.setUserHair(7)}">
+                    <img src= "hair/7b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(8)}">
+                    <img src= "hair/8b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(9)}">
+                    <img src= "hair/9b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(10)}">
+                    <img src= "hair/10b.png" />
+                </h:commandLink>
+            </div>
+        </h:form>
+
+        <br></br>
+
+        <!-- Eyes selection -->
+        <h:form  style = "background-color: white; width: 277px; position: relative; border: 3px solid black; position: relative; left: 18%">
+            <div id="eyeballs"  style= "position:relative; ">
+                <h:commandLink action ="#{UserNumberBean.setUserEyes(3)}" >
+                    <img src= "eyes/3b.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserEyes(1)}">
+                    <img src= "eyes/1b.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserEyes(2)}">
+                    <img src= "eyes/2b.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserEyes(4)}">
+                    <img src= "eyes/4b.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserEyes(5)}">
+                    <img src= "eyes/5b.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserEyes(6)}">
+                    <img src= "eyes/6b.png"/>
+                </h:commandLink>
+            </div>
+        </h:form>
+
+        <br></br>
+
+        <!-- Outfit selection -->
+        <h:form style = "background-color: white;width: 279px; height: 100; border: 3px solid black; position: relative; left: 18%">
+            <div id="outfits" style ="position: relative">
+                <h:commandLink action ="#{UserNumberBean.setUserOutfit(2)}">
+                    <img src= "outfit/2b.png"  />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserOutfit(3)}">
+                    <img src= "outfit/3b.png"/>
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserOutfit(1)}">
+                    <img src= "outfit/1b.png"  />
+                </h:commandLink>
+            </div>
+            <br></br>
+        </h:form>
+
+        <!-- Button to send all current data to database -->
+        <h:form style ="text-align: center">
+            <h1>Name :</h1> <h:inputText id="userNumber" size="15" maxlength="20" value="#{UserNumberBean.userNumber}" />
+            <h:commandButton id="submit" value="Finalize Waifu" action="response" />
+        </h:form>
+
+        <!-- Button that goes home -->
+        <h:form  style ="text-align: center; padding-top: 5%;">
+            <h:commandButton  action="index" image ="button/home.png"/>
+        </h:form>   
+    </body>
+</html>

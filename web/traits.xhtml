@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <head>            
+        <h:form>
+            <h:commandButton  action="index" image ="button/1.png"/>
+        </h:form>   
+    </head>
+
+    <body style = "font-family: Comic Sans MS, cursive, sans-serif; text-align: 
+          center; background: url(button/polkadot.jpg) repeat;">
+
+
+        <div style ='position: relative; float: right; right: 35%; background-color: #6cafd9; color: white; border-style: dotted; font-size: 115%' >
+            <h1>Her Positive Traits Are:</h1>
+            <h:outputText escape="false" value="#{UserNumberBean.getGoodT1()}"/>
+            <br><h:outputText escape="false" value="#{UserNumberBean.getGoodT2()}"/></br>
+            <h:outputText escape="false" value="#{UserNumberBean.getGoodT3()}"/>
+
+            <h1>Her Negative Traits Are: </h1>
+            <h:outputText escape="false" value="#{UserNumberBean.getBadT()}"/> <br></br><br></br>
+
+        </div>
+        <div style ="width: 163px; height: 200px; border: 3px solid black; position: relative; left: 30%; top: 5% ">
+            <div id="stuff">
+
+                <div id="hair" style ="position: absolute;   z-index: 3; " >
+                    <h:graphicImage value ="#{UserNumberBean.getUserHair()}"   />
+                </div>
+                <div id="eyes" style ="position: absolute;  z-index: 4; " >
+                    <h:graphicImage value ="#{UserNumberBean.getUserEyes()}"  />
+                </div>
+                <div id="outfit" style ="position: absolute; z-index: 2;" >
+                    <h:graphicImage value ="#{UserNumberBean.getUserOutfit()}"/>
+                </div>
+                <div id="faces" style ="position: absolute;  z-index: 1; " >
+                    <h:graphicImage value ="#{UserNumberBean.getUserFace()}"/>
+                </div>
+                <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                <h2><h:outputText escape="false" value="#{UserNumberBean.getUserNumber()}"/></h2>
+
+
+            </div>
+        </div>
+        <h:form  style ="text-align: center; padding-top: 5%;">
+            <h:commandButton  action="index" image ="button/home.png"/>
+        </h:form>   
+
+
+    </body>
+</html>

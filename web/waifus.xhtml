@@ -1,0 +1,121 @@
+<!--
+Cynthia Okuno
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <head>   
+        <!--
+            Script that toggles visibility on traits div.   
+        -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            function toggleDiv(divId) {
+                $("#" + divId).toggle();
+            }
+        </script>
+
+        <!--
+            Home button
+        -->
+        <h:form>
+            <h:commandButton  action="index" image ="button/1.png"/>
+        </h:form>   
+    </head>
+
+    <body style = "    font-family: Comic Sans MS, cursive, sans-serif; 
+          text-align: center; 
+          background: url(button/polkadot.jpg) repeat;">
+
+        <!--
+            Traits!
+        -->
+        <a href="javascript:toggleDiv('traits');" style = "text-align: center"><img src="button/seetrait.png"/></a><br></br>
+        <div id="traits" style="position: relative; display: none; float: right; right: 25%">
+
+            <!--
+                Grabs an arraylist of waifu traits from the DB using attemptsbean. Names it "c"
+            -->
+            <h:dataTable value="#{AttemptsBean.getAttemptsList()}" var ="c" >
+
+                <h:column>
+                    <f:facet name="header"> </f:facet>
+
+                    <!--
+                        Grabs traits
+                    -->
+                    #{UserNumberBean.setGoodT1(c.goodT1)}
+                    #{UserNumberBean.setGoodT2(c.goodT2)}
+                    #{UserNumberBean.setGoodT3(c.goodT3)}
+                    #{UserNumberBean.setBadT(c.badT)}
+
+                    <div style ='position: relative; float: right; background-color: #6cafd9; width: 400px;  height: 228px; color: white; border-style: dotted; font-size: 115%' >
+                        <b>Her Positive Traits Are:</b><br></br>
+                        <br><h:outputText escape="false" value="#{UserNumberBean.getGoodT1()}"/>
+                            <br><h:outputText escape="false" value="#{UserNumberBean.getGoodT2()}"/></br>
+                            <h:outputText escape="false" value="#{UserNumberBean.getGoodT3()}"/>
+                        </br>
+                        <br><b>Her Negative Traits Are: </b></br>
+                        <br> <h:outputText escape="false" value="#{UserNumberBean.getBadT()}"/> <br></br><br></br></br>
+                    </div>
+                </h:column>
+            </h:dataTable>
+        </div>
+
+
+        <div id="oldwaifus" style = "position: relative; left: 35%">
+            <h:dataTable value="#{AttemptsBean.getAttemptsList()}" var ="c" >
+
+                <h:column>
+                    <f:facet name="header"> </f:facet>
+                        #{UserNumberBean.setUserFace(c.face)}
+                        #{UserNumberBean.setUserHair(c.hair)}  
+                        #{UserNumberBean.setUserEyes(c.eyes)}  
+                        #{UserNumberBean.setUserOutfit(c.outfit)}  
+                        #{UserNumberBean.setUserNumber(c.name)}
+                        #{UserNumberBean.setGoodT1(c.goodT1)}
+                        #{UserNumberBean.setGoodT2(c.goodT2)}
+                        #{UserNumberBean.setGoodT3(c.goodT3)}
+                        #{UserNumberBean.setBadT(c.badT)}
+
+
+                    <div id = "meow" style ="width: 163px; height: 200px; border: 3px solid black; text-align: center; ">
+                        <div id="stuff">
+                            <div id="hair" style ="position: absolute;   z-index: 3; " >
+                                <h:graphicImage value ="#{UserNumberBean.getUserHair()}"   />
+                            </div>
+                            <div id="eyes" style ="position: absolute;  z-index: 4;" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserEyes()}"  />
+                            </div>
+                            <div id="outfit" style ="position: absolute; z-index: 2" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserOutfit()}"/>
+                            </div>
+                            <div id="faces" style ="position: absolute;  z-index: 1" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserFace()}"/>
+                            </div>
+                            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                            <h:outputText escape="false" value="#{UserNumberBean.getUserNumber()}"/>
+
+                        </div>
+                    </div>
+
+                </h:column>
+
+            </h:dataTable>
+
+
+        </div>
+        <br></br>
+        <h:form prependId="false">
+            <h:form>
+                <h:commandButton  action="waifumaker" image ="button/22.png"/>
+            </h:form>                   
+        </h:form>
+        <h:form  style ="text-align: center; padding-top: 5%;">
+            <h:commandButton  action="index" image ="button/home.png"/>
+        </h:form>   
+        <br></br>
+    </body>
+</html>
