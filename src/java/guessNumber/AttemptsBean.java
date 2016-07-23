@@ -1,6 +1,3 @@
-/*
- Cynthia Okuno
- */
 package guessNumber;
 
 import java.io.Serializable;

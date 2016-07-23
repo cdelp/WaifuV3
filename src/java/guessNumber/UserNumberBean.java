@@ -1,6 +1,3 @@
-/*
- Katriel Chiu
- */
 package guessNumber;
 
 import java.io.Serializable;

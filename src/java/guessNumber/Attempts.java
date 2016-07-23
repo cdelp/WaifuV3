@@ -1,6 +1,3 @@
-/*
- Katriel Chiu
- */
 package guessNumber;
 
 /**
