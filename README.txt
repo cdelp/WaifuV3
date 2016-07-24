@@ -19,6 +19,8 @@ Welcome to Waifu Maker 3.0! The place where you are able to make the Waifu of yo
   - Set up on website - Christie Reindle
 3) Login 
   - Set up on website - Cynthia Okuno
+4) Static Analysis
+  - Code improvments recommended by tool - Christopher Delp
 
 ---
 
