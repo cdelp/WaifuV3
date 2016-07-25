@@ -24,6 +24,9 @@ import java.util.List;
 @SessionScoped
 public class UserNumberBean implements Serializable {
 
+    // copied from login.java and changed first number from 1 to 3.
+    private static final long serialVersionUID = 3094801825228386363L;
+    
     String userNumber; //Name
     Integer hair;
     Integer face;
@@ -57,43 +60,50 @@ public class UserNumberBean implements Serializable {
         setGoodT3(randomInt3);
         setBadT(randomInt4);
 
-        // connection may need to be closed, per FindBugs
-        //see DataConnect file for example
-        PreparedStatement ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?)");
-        //name hair face hat outfit eyes
-        if (userNumber == null) {
-            ps.setString(1, "waifu");
-        } else {
-            ps.setString(1, userNumber);
-        }
-        if (hair == null) {
-            ps.setInt(2, 1);
-        } else {
-            ps.setInt(2, hair);
-        }
-        if (face == null) {
-            ps.setInt(3, 1);
-        } else {
-            ps.setInt(3, face);
-        }
-        if (outfit == null) {
-            ps.setInt(4, 1);
-        } else {
-            ps.setInt(4, outfit);
-        }
-        if (eyes == null) {
-            ps.setInt(5, 1);
-        } else {
+        try {
+            PreparedStatement ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?)");
+            try {
+                //name hair face hat outfit eyes
+                if (userNumber == null) {
+                    ps.setString(1, "waifu");
+                } else {
+                    ps.setString(1, userNumber);
+                }
+                if (hair == null) {
+                    ps.setInt(2, 1);
+                } else {
+                    ps.setInt(2, hair);
+                }
+                if (face == null) {
+                    ps.setInt(3, 1);
+                } else {
+                    ps.setInt(3, face);
+                }
+                if (outfit == null) {
+                    ps.setInt(4, 1);
+                } else {
+                    ps.setInt(4, outfit);
+                }
+                if (eyes == null) {
+                    ps.setInt(5, 1);
+                } else {
 
-            ps.setInt(5, eyes);
-        }
-        ps.setInt(6, randomInt1);
-        ps.setInt(7, randomInt2);
-        ps.setInt(8, randomInt3);
-        ps.setInt(9, randomInt4);
+                    ps.setInt(5, eyes);
+                }
+                ps.setInt(6, randomInt1);
+                ps.setInt(7, randomInt2);
+                ps.setInt(8, randomInt3);
+                ps.setInt(9, randomInt4);
 
-        // need to confirm whether this needs to be assigned to a variable. 
-        boolean execute = ps.execute();
+                // need to confirm whether this needs to be assigned to a variable. 
+                boolean execute = ps.execute();
+            } finally {
+                        ps.close();
+                      } 
+        }finally {
+                con.close();
+                }
+            
         return "Look at your beautiful waifu!";
     }
 

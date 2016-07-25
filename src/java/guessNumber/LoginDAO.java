@@ -21,18 +21,20 @@ public class LoginDAO {
         PreparedStatement ps = null;
 
         try {
-            con = DataConnect.getConnection();
-            // connection may need to be closed, per FindBugs.
-            //see DataConnect file for example
+            con = DataConnect.getConnection();          
             ps = con.prepareStatement("Select USERNAME, Password from Users where USERNAME = ? and password = ?");
-            ps.setString(1, user);
-            ps.setString(2, password);
+            try {
+                ps.setString(1, user);
+                ps.setString(2, password);
 
-            ResultSet rs = ps.executeQuery();
+                ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
-                //result found, means valid inputs
-                return true;
+                if (rs.next()) {
+                    //result found, means valid inputs
+                    return true;
+                }
+            } finally {
+                ps.close();
             }
         } catch (SQLException ex) {
             System.out.println("Login error -->" + ex.getMessage());

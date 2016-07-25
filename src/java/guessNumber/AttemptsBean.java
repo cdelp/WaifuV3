@@ -22,6 +22,9 @@ import javax.sql.DataSource;
 @RequestScoped
 public class AttemptsBean implements Serializable {
 
+    // copied from login.java and changed first number from 1 to 2.
+    private static final long serialVersionUID = 2094801825228386363L;
+    
     @Resource(name = "jdbc:derby://localhost:1527/ics")
     private DataSource ds;
 
@@ -34,33 +37,40 @@ public class AttemptsBean implements Serializable {
         if (ds == null) {
             throw new SQLException("Cannot get data source");
         }
-        //hard coded password. needs to be corrected
-        //need to close connection afterward
-        //see DataConnect file for example
+        //hard coded password. needs to be corrected         
         Connection con = DriverManager.getConnection(dbURL, user, password);
         //  : Connections select statement
-
         List<Attempts> list = new ArrayList<Attempts>();
         PreparedStatement ps;
         ResultSet resInfo = null;
         String sqlstatement = "select * from WAIFUS";
-        ps = con.prepareStatement(sqlstatement);
-        resInfo = ps.executeQuery();
-        while (resInfo.next()) {
-            Attempts att = new Attempts();
+        
+        try {
+            ps = con.prepareStatement(sqlstatement);
+            try { 
+                resInfo = ps.executeQuery();
+                while (resInfo.next()) {
+                    Attempts att = new Attempts();
 
-            att.setEyes(resInfo.getInt("EYES"));
-            att.setFace(resInfo.getInt("FACE"));
-            att.setHair(resInfo.getInt("HAIR"));
-            att.setName(resInfo.getString("NAME"));
-            att.setOutfit(resInfo.getInt("OUTFIT"));
-            att.setGoodT1(resInfo.getInt("GOODT1"));
-            att.setGoodT2(resInfo.getInt("GOODT2"));
-            att.setGoodT3(resInfo.getInt("GOODT3"));
-            att.setBadT(resInfo.getInt("BADT"));
+                    att.setEyes(resInfo.getInt("EYES"));
+                    att.setFace(resInfo.getInt("FACE"));
+                    att.setHair(resInfo.getInt("HAIR"));
+                    att.setName(resInfo.getString("NAME"));
+                    att.setOutfit(resInfo.getInt("OUTFIT"));
+                    att.setGoodT1(resInfo.getInt("GOODT1"));
+                    att.setGoodT2(resInfo.getInt("GOODT2"));
+                    att.setGoodT3(resInfo.getInt("GOODT3"));
+                    att.setBadT(resInfo.getInt("BADT"));
 
-            list.add(att);
-        }
+                    list.add(att);
+                } 
+            } finally {
+                        ps.close();
+                      } 
+        }finally {
+                con.close();
+                }
+
         return list;
     }
 
@@ -72,34 +82,39 @@ public class AttemptsBean implements Serializable {
         if (ds == null) {
             throw new SQLException("Cannot get data source");
         }
-        //hard coded connection password. Need to correct.
-        // need to close connection afterward.
-        //see DataConnect file for example
+        //hard coded connection password. Need to correct.       
         Connection con = DriverManager.getConnection(dbURL, user, password);
         //  : Connections select statement
-
         List<Attempts> list = new ArrayList<Attempts>();
         PreparedStatement ps;
         ResultSet resInfo = null;
         String sqlstatement = "select * from WAIFUS where name = ";
-        ps = con.prepareStatement(sqlstatement);
-        // may need to close/clean up, per FindBugs
-        resInfo = ps.executeQuery();
-        while (resInfo.next()) {
-            Attempts att = new Attempts();
+        try {
+            ps = con.prepareStatement(sqlstatement);
+            try {
+                // may need to close/clean up, per FindBugs
+                resInfo = ps.executeQuery();
+                while (resInfo.next()) {
+                    Attempts att = new Attempts();
 
-            att.setEyes(resInfo.getInt("EYES"));
-            att.setFace(resInfo.getInt("FACE"));
-            att.setHair(resInfo.getInt("HAIR"));
-            att.setName(resInfo.getString("NAME"));
-            att.setOutfit(resInfo.getInt("OUTFIT"));
-            att.setGoodT1(resInfo.getInt("GOODT1"));
-            att.setGoodT2(resInfo.getInt("GOODT2"));
-            att.setGoodT3(resInfo.getInt("GOODT3"));
-            att.setBadT(resInfo.getInt("BADT"));
+                    att.setEyes(resInfo.getInt("EYES"));
+                    att.setFace(resInfo.getInt("FACE"));
+                    att.setHair(resInfo.getInt("HAIR"));
+                    att.setName(resInfo.getString("NAME"));
+                    att.setOutfit(resInfo.getInt("OUTFIT"));
+                    att.setGoodT1(resInfo.getInt("GOODT1"));
+                    att.setGoodT2(resInfo.getInt("GOODT2"));
+                    att.setGoodT3(resInfo.getInt("GOODT3"));
+                    att.setBadT(resInfo.getInt("BADT"));
 
-            list.add(att);
-        }
+                    list.add(att);
+                }
+            } finally {
+                        ps.close();
+                      } 
+        }finally {
+                con.close();
+                }
         return list;
     }
 
