@@ -22,6 +22,8 @@ public class LoginDAO {
 
         try {
             con = DataConnect.getConnection();
+            // connection may need to be closed, per FindBugs.
+            //see DataConnect file for example
             ps = con.prepareStatement("Select USERNAME, Password from Users where USERNAME = ? and password = ?");
             ps.setString(1, user);
             ps.setString(2, password);

@@ -41,6 +41,9 @@ public class UserNumberBean implements Serializable {
         String user = "DBUSER";
         String password = "ics";
 
+        //hard coded password. Need to correct.
+        // connection may need to be closed, per FindBugs
+        //see DataConnect file for example
         Connection con = DriverManager.getConnection(dbURL, user, password);
 
         Random randomGR = new Random();
@@ -54,6 +57,8 @@ public class UserNumberBean implements Serializable {
         setGoodT3(randomInt3);
         setBadT(randomInt4);
 
+        // connection may need to be closed, per FindBugs
+        //see DataConnect file for example
         PreparedStatement ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?)");
         //name hair face hat outfit eyes
         if (userNumber == null) {
@@ -87,6 +92,7 @@ public class UserNumberBean implements Serializable {
         ps.setInt(8, randomInt3);
         ps.setInt(9, randomInt4);
 
+        // need to confirm whether this needs to be assigned to a variable. 
         boolean execute = ps.execute();
         return "Look at your beautiful waifu!";
     }
@@ -138,6 +144,7 @@ public class UserNumberBean implements Serializable {
     }
 
     public String getGoodT1() {
+        // "field never initialized within any constructor but derefereced without null check" warning per FindBugs
         switch (this.goodt1) {
             case 0:
                 return "Likes to clean.";
@@ -159,6 +166,7 @@ public class UserNumberBean implements Serializable {
     }
 
     public String getGoodT2() {
+        // "field never initialized within any constructor but derefereced without null check" warning per FindBugs
         switch (this.goodt2) {
             case 0:
                 return "Likes to cuddle.";
@@ -179,6 +187,7 @@ public class UserNumberBean implements Serializable {
     }
 
     public String getGoodT3() {
+        // "field never initialized within any constructor but derefereced without null check" warning per FindBugs
         switch (this.goodt3) {
             case 0:
                 return "Cooks like Gordon Ramsay.";
@@ -199,6 +208,7 @@ public class UserNumberBean implements Serializable {
     }
 
     public String getBadT() {
+       // "field never initialized within any constructor but derefereced without null check" warning per FindBugs
         switch (this.badt) {
             case 0:
                 return "Lazier than Snorlax.";
@@ -223,6 +233,7 @@ public class UserNumberBean implements Serializable {
      */
     //Makes new waifu
     public void UserNumberBean() {
+        // may need to remove void and make set methods private or final, per FindBugs
         setUserHair(1);
         setUserFace(1);
         setUserOutfit(1);

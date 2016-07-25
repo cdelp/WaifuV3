@@ -34,6 +34,9 @@ public class AttemptsBean implements Serializable {
         if (ds == null) {
             throw new SQLException("Cannot get data source");
         }
+        //hard coded password. needs to be corrected
+        //need to close connection afterward
+        //see DataConnect file for example
         Connection con = DriverManager.getConnection(dbURL, user, password);
         //  : Connections select statement
 
@@ -69,6 +72,9 @@ public class AttemptsBean implements Serializable {
         if (ds == null) {
             throw new SQLException("Cannot get data source");
         }
+        //hard coded connection password. Need to correct.
+        // need to close connection afterward.
+        //see DataConnect file for example
         Connection con = DriverManager.getConnection(dbURL, user, password);
         //  : Connections select statement
 
@@ -77,6 +83,7 @@ public class AttemptsBean implements Serializable {
         ResultSet resInfo = null;
         String sqlstatement = "select * from WAIFUS where name = ";
         ps = con.prepareStatement(sqlstatement);
+        // may need to close/clean up, per FindBugs
         resInfo = ps.executeQuery();
         while (resInfo.next()) {
             Attempts att = new Attempts();

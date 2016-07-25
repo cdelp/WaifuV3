@@ -20,7 +20,7 @@ public class DataConnect {
             String dbURL = "jdbc:derby://localhost:1527/ics";
             String user = "DBUSER";
             String password = "ics";
-
+            //hard coded connection password. Need to correct.
             Connection con = DriverManager.getConnection(dbURL, user, password);
             return con;
         } catch (Exception ex) {
