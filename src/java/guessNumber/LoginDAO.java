@@ -22,7 +22,7 @@ public class LoginDAO {
 
         try {
             con = DataConnect.getConnection();
-            ps = con.prepareStatement("Select uname, password from Users where uname = ? and password = ?");
+            ps = con.prepareStatement("Select USERNAME, Password from Users where USERNAME = ? and password = ?");
             ps.setString(1, user);
             ps.setString(2, password);
 
