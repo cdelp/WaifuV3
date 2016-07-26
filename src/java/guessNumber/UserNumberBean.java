@@ -45,8 +45,6 @@ public class UserNumberBean implements Serializable {
         String password = "ics";
 
         //hard coded password. Need to correct.
-        // connection may need to be closed, per FindBugs
-        //see DataConnect file for example
         Connection con = DriverManager.getConnection(dbURL, user, password);
 
         Random randomGR = new Random();

@@ -23,6 +23,10 @@ import guessNumber.LoginDAO;
 import guessNumber.SessionUtils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -78,6 +82,42 @@ public class Login implements Serializable {
             return "login";
         }
     }
+    
+    // ************************* UID need to be figured out *******************************
+    //create new user login
+    public String createUsernamePassword() {
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        
+        // need to add check to see if username exists already
+               
+        try {
+            con = DataConnect.getConnection();          
+            ps = con.prepareStatement("INSERT INTO USERS VALUES (?, ?, ?)");
+            try {
+                // set UID
+                ps.setInt(1, 155); // don't want hard coded int, need to figure out way to set UID
+                // set username
+                ps.setString(2, user); 
+                // set password
+                ps.setString(3, pwd); 
+
+                ps.execute();      
+            } finally {
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Login error -->" + ex.getMessage());
+            
+        } finally {
+            DataConnect.close(con);
+        }
+        
+        return "login";
+    }
+    
+    // ************************* end not working *******************************
 
     //logout event, invalidate session
     public String logout() {
