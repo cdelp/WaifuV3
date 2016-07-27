@@ -97,7 +97,7 @@ public class Login implements Serializable {
             ps = con.prepareStatement("INSERT INTO USERS VALUES (?, ?, ?)");
             try {
                 // set UID
-                ps.setInt(1, 155); // don't want hard coded int, need to figure out way to set UID
+                ps.setInt(1, 156); // don't want hard coded int, need to figure out way to set UID
                 // set username
                 ps.setString(2, user); 
                 // set password
