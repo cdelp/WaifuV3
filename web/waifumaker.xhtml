@@ -17,6 +17,12 @@
           text-align: center; 
           background: url(button/polkadot.jpg) repeat;">
 
+        <h:form>
+            <h:commandButton action="#{login.logout}"
+                                 value="Logout"></h:commandButton>
+        </h:form>   
+        
+        
         <!-- Sets default "face" which is just the body -->
         <div id  ="stuff" style = "text-align:center; left: 1150px; top: 150px; position: relative;  padding-right: 30%; padding-top: 3%">
             #{UserNumberBean.setUserFace(2)}
