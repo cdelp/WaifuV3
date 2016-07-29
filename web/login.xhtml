@@ -3,28 +3,36 @@
 
 <!-- Used http://www.journaldev.com/7252/jsf-authentication-login-logout-database-example to set this up. Will be changing the java code -->
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>login</title>
-</h:head>
-<h:body>
-	<h:form>
-		<h3>Login</h3>
-		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{login.user}"></h:inputText>
-		<h:message for="username"></h:message>
-		<br></br><br></br>
-		
-		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
-		<h:message for="password"></h:message>
-		<br></br><br></br>
-		
-		<h:commandButton action="#{login.validateUsernamePassword}"
-			value="Login"></h:commandButton>
+      xmlns:h="http://java.sun.com/jsf/html">
+    <body style = "    font-family: Comic Sans MS, cursive, sans-serif; 
+          text-align: center; 
+          background: url(button/polkadot.jpg) repeat;">    
+    <head>            
+        <h:form style =" padding-bottom: 2%; padding-top: 2%" >
+            <h:commandButton  action="login" image ="button/login.png"/>
+        </h:form>   
+    </head>
+        <h:body>
+            <h:form>
+
                 
+                <h:outputText value="Username " />
+                <h:inputText id="username" value="#{login.user}"></h:inputText>
+                <h:message for="username"></h:message>
+                <br></br><br></br>
+
+                <h:outputText value="Password " />
+                <h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
+                <h:message for="password"></h:message>
+                <br></br><br></br>
+
+                <h:commandButton action="#{login.validateUsernamePassword}"
+                                 value="Login"></h:commandButton>
+                                 
                 <h:commandButton action="newUser"
-			value="Create Account"></h:commandButton>
-	</h:form>
-</h:body>
+                                 value="Create Account" style=" margin-left: 10px "></h:commandButton>
+                
+            </h:form>
+        </h:body>
+    </body>
 </html>
