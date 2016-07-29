@@ -14,8 +14,7 @@
     </head>
         <h:body>
             <h:form>
-
-                
+                               
                 <h:outputText value="Username " />
                 <h:inputText id="username" value="#{login.user}"></h:inputText>
                 <h:message for="username"></h:message>
@@ -30,7 +29,10 @@
                                  value="Login"></h:commandButton>
                                  
                 <h:commandButton action="newUser"
-                                 value="Create Account" style=" margin-left: 10px "></h:commandButton>
+                                 value="Create Account" style=" margin-left: 10px "></h:commandButton>   
+                                 
+                <!-- sets color of warning message -->
+                <h:messages warnStyle=" color:red"/>
                 
             </h:form>
         </h:body>

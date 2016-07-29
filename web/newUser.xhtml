@@ -4,25 +4,35 @@
 <!-- Used http://www.journaldev.com/7252/jsf-authentication-login-logout-database-example to set this up. Will be changing the java code -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>newUser</title>
-</h:head>
-<h:body>
-	<h:form>
-		<h3>Create Account</h3>
-		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{login.user}"></h:inputText>
-		<h:message for="username"></h:message>
-		<br></br><br></br>
-		
-		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
-		<h:message for="password"></h:message>
-		<br></br><br></br>
-		
-		<h:commandButton action="#{login.createUsernamePassword}"
-			value="Submit"></h:commandButton>
-                
-	</h:form>
-</h:body>
+    <body style = "    font-family: Comic Sans MS, cursive, sans-serif; 
+          text-align: center; 
+          background: url(button/polkadot.jpg) repeat;">  
+    <h:head>
+        <!-- replace login.png with create account png? -->
+        <h:form style =" padding-bottom: 2%; padding-top: 2%" >
+            <h:commandButton  action="login" image ="button/login.png"/>
+        </h:form> 
+    </h:head>
+    <h:body>
+            <h:form>
+                    <h3>Create Account</h3>
+                    <h:outputText value="Username" />
+                    <h:inputText id="username" value="#{login.user}"></h:inputText>
+                    <h:message for="username"></h:message>
+                    <br></br><br></br>
+
+                    <h:outputText value="Password" />
+                    <h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
+                    <h:message for="password"></h:message>
+                    <br></br><br></br>
+
+                    <h:commandButton action="#{login.createUsernamePassword}"
+                            value="Submit"></h:commandButton>
+                    
+                    <!-- sets color of warning message -->
+                    <h:messages warnStyle=" color:red"/>
+
+            </h:form>
+    </h:body>
+    </body>
 </html>
