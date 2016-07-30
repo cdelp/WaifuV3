@@ -18,7 +18,7 @@ public class DataConnectTest {
     public Connection con;
     
     public DataConnectTest() {
-        System.out.println("getConnection");
+      //  System.out.println("getConnection");
      
             String dbURL = "jdbc:derby://localhost:1527/ics";
             String user = "DBUSER";
@@ -33,24 +33,6 @@ public class DataConnectTest {
         
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-        
-        
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of getConnection method, of class DataConnect.
      * @throws java.sql.SQLException
@@ -69,7 +51,7 @@ public class DataConnectTest {
      */
     @Test
     public void testClose() throws SQLException {
-        System.out.println("close");
+      //  System.out.println("close");
       
         DataConnect.close(con);
         

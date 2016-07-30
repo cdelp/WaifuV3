@@ -27,6 +27,9 @@ public class UserNumberBean implements Serializable {
     // copied from login.java and changed first number from 1 to 3.
     private static final long serialVersionUID = 3094801825228386363L;
     
+    Connection con = null;
+    PreparedStatement ps = null;
+    
     String userNumber; //Name
     Integer hair;
     Integer face;
@@ -39,13 +42,7 @@ public class UserNumberBean implements Serializable {
 
     public String getResponse() throws SQLException {
 
-        //commenting out for now
-        String dbURL = "jdbc:derby://localhost:1527/ics";
-        String user = "DBUSER";
-        String password = "ics";
-
-        //hard coded password. Need to correct.
-        Connection con = DriverManager.getConnection(dbURL, user, password);
+        con = DataConnect.getConnection();
 
         Random randomGR = new Random();
         randomInt1 = randomGR.nextInt(5);
@@ -59,7 +56,7 @@ public class UserNumberBean implements Serializable {
         setBadT(randomInt4);
 
         try {
-            PreparedStatement ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?)");
             try {
                 //name hair face hat outfit eyes
                 if (userNumber == null) {

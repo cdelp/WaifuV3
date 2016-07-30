@@ -16,8 +16,9 @@ public class DataConnectNGTest {
     
     public Connection con;
     
+    @Test(priority = 1)
     public DataConnectNGTest() {
-        System.out.println("getConnection");
+        System.out.println("Open connection");
      
             String dbURL = "jdbc:derby://localhost:1527/ics";
             String user = "DBUSER";
@@ -32,29 +33,13 @@ public class DataConnectNGTest {
         
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
-
     /**
      * Test of getConnection method, of class DataConnect.
      * @throws java.sql.SQLException
      */
-    @Test
+    @Test(priority = 2)
     public void testGetConnection() throws SQLException {
-        System.out.println("getConnection");
+        System.out.println("test connection");
         int timeout = 0;
             con.isValid(timeout);
     }
@@ -63,9 +48,9 @@ public class DataConnectNGTest {
      * Test of close method, of class DataConnect.
      * @throws java.sql.SQLException
      */
-    @Test
+    @Test(priority = 3)
     public void testClose() throws SQLException {
-        System.out.println("close");
+        System.out.println("close connection");
         DataConnect.close(con);
         
         con.isClosed();

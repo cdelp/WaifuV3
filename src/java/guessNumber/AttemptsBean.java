@@ -25,23 +25,17 @@ public class AttemptsBean implements Serializable {
     // copied from login.java and changed first number from 1 to 2.
     private static final long serialVersionUID = 2094801825228386363L;
     
-    @Resource(name = "jdbc:derby://localhost:1527/ics")
+    private Connection con = null;
+    private PreparedStatement ps = null;
     private DataSource ds;
 
     //Clone this for grabbing traits on list, except do search on name.
     public List<Attempts> getAttemptsList() throws SQLException {
-        String dbURL = "jdbc:derby://localhost:1527/ics";
-        String user = "DBUSER";
-        String password = "ics";
-
-        if (ds == null) {
-            throw new SQLException("Cannot get data source");
-        }
-        //hard coded password. needs to be corrected         
-        Connection con = DriverManager.getConnection(dbURL, user, password);
-        //  : Connections select statement
+ 
+        con = DataConnect.getConnection();        
+                
         List<Attempts> list = new ArrayList<Attempts>();
-        PreparedStatement ps;
+
         ResultSet resInfo = null;
         String sqlstatement = "select * from WAIFUS";
         
@@ -75,24 +69,17 @@ public class AttemptsBean implements Serializable {
     }
 
     public List<Attempts> getTraits() throws SQLException {
-        String dbURL = "jdbc:derby://localhost:1527/ics";
-        String user = "DBUSER";
-        String password = "ics";
 
-        if (ds == null) {
-            throw new SQLException("Cannot get data source");
-        }
-        //hard coded connection password. Need to correct.       
-        Connection con = DriverManager.getConnection(dbURL, user, password);
-        //  : Connections select statement
+        con = DataConnect.getConnection();
+        
         List<Attempts> list = new ArrayList<Attempts>();
-        PreparedStatement ps;
+
         ResultSet resInfo = null;
         String sqlstatement = "select * from WAIFUS where name = ";
         try {
             ps = con.prepareStatement(sqlstatement);
             try {
-                // may need to close/clean up, per FindBugs
+
                 resInfo = ps.executeQuery();
                 while (resInfo.next()) {
                     Attempts att = new Attempts();
