@@ -40,6 +40,7 @@ public class UserNumberBean implements Serializable {
 
     Integer randomInt1, randomInt2, randomInt3, randomInt4;
 
+    // inserts new waifu into waifus table
     public String getResponse() throws SQLException {
 
         con = DataConnect.getConnection();

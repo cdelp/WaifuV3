@@ -11,6 +11,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;//reading included file Templates/UnitTests/Templates/Licenses/license-default.txt
 
+/**
+ * Tests database connection opening and closing.
+ * 
+ * @author Cynthia Okuno, Christie Reidle, ChristopherDelp
+ */
 
 public class DataConnectNGTest {
     
