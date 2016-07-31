@@ -14,7 +14,7 @@ import org.testng.annotations.Test;//reading included file Templates/UnitTests/T
 /**
  * Tests database connection opening and closing.
  * 
- * @author Cynthia Okuno, Christie Reidle, ChristopherDelp
+ * @author Cynthia Okuno, Christie Reindle, ChristopherDelp
  */
 
 public class DataConnectNGTest {

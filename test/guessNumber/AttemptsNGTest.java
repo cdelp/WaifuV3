@@ -13,7 +13,7 @@ import static org.testng.Assert.*;
 /**
  * Class only has setters and getters, so testing not particularly useful.
  * 
- * @author Cynthia Okuno, Christie Reidle, ChristopherDelp
+ * @author Cynthia Okuno, Christie Reindle, ChristopherDelp
  */
 
 

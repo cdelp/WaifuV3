@@ -2,6 +2,7 @@ package guessNumber;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Arrays;
 import java.util.List;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -16,7 +17,7 @@ import static org.testng.Assert.*;
 /**
  * 
  * 
- * @author Cynthia Okuno, Christie Reidle, ChristopherDelp
+ * @author Cynthia Okuno, Christie Reindle, ChristopherDelp
  */
 
 
@@ -46,6 +47,7 @@ public class AttemptsBeanNGTest {
     }
 
     /**
+     * Not Working
      * Test of getAttemptsList method, of class AttemptsBean.
      * Method should return a list of all waifus saved in DB.
      */
@@ -55,11 +57,13 @@ public class AttemptsBeanNGTest {
         ps = con.prepareStatement("select * from WAIFUS");
         AttemptsBean instance = new AttemptsBean();
         List expResult = null; //all waifus?
-        List result = instance.getAttemptsList();
+        List result = instance.getAttemptsList(); //is getting list of addresses 
+        System.out.println("list: " + result);
         assertEquals(result, expResult);
     }
 
     /**
+     * Not Working
      * Test of getTraits method, of class AttemptsBean.
      */
     @Test
@@ -69,8 +73,6 @@ public class AttemptsBeanNGTest {
         List expResult = null;
         List result = instance.getTraits();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -11,7 +11,7 @@ import static org.testng.Assert.*;
 /**
  * Tests adding new waifu to table.
  * 
- * @author Cynthia Okuno, Christie Reidle, ChristopherDelp
+ * @author Cynthia Okuno, Christie Reindle, ChristopherDelp
  */
 
 public class UserNumberBeanNGTest {
@@ -42,7 +42,7 @@ public class UserNumberBeanNGTest {
      * should insert new waifu into table and return string.
      * @throws java.lang.Exception
      */
-    @Test(priority = 1)
+    @Test(priority = 20)
     public void testGetResponse() throws Exception {
         System.out.println("getResponse");
        // UserNumberBean instance = new UserNumberBean();

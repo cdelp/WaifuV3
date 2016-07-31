@@ -95,7 +95,7 @@ public class Login implements Serializable {
             
             // failed attempt to check for username's existence before allowing another user
             // to use add the same one to the db
-            ps = con.prepareStatement("SELECT USERNAME from Users where USERNEAME = ?");
+            ps = con.prepareStatement("SELECT USERNAME from Users where USERNAME = ?");
             try {
                 ps.setString(1, user);
 
@@ -118,14 +118,15 @@ public class Login implements Serializable {
                     try {
                         // not adding to db consistently. Sometimes adds, sometimes doesn't.
                         // set UID
-                        ps.setInt(1, 666); // don't want hard coded int, need to figure out way to set UID
+                        ps.setInt(1, 55); // don't want hard coded int, need to figure out way to set UID
                         // set username
                         ps.setString(2, user); 
                         // set password
                         ps.setString(3, pwd); 
 
-                        ps.execute();   
-
+                        ps.execute();
+                        
+                        System.out.println("Added " + user);
                     } finally {
                         ps.close();
                     }
