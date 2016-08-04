@@ -95,9 +95,9 @@ public class Login implements Serializable {
             
             // failed attempt to check for username's existence before allowing another user
             // to use add the same one to the db
-            ps = con.prepareStatement("SELECT USERNAME from Users where USERNAME = ?");
+            ps = con.prepareStatement("SELECT USERNAME FROM USERS WHERE USERNAME = '" + user + "'");
             try {
-                ps.setString(1, user);
+                //ps.setString(1, user);
 
                 ResultSet rs = ps.executeQuery();
 
@@ -114,30 +114,32 @@ public class Login implements Serializable {
                     ps.close();
                 }
         
-                    ps = con.prepareStatement("INSERT INTO USERS VALUES (?, ?, ?)");
-                    try {
-                        // not adding to db consistently. Sometimes adds, sometimes doesn't.
-                        // set UID
-                        ps.setInt(1, 55); // don't want hard coded int, need to figure out way to set UID
-                        // set username
-                        ps.setString(2, user); 
-                        // set password
-                        ps.setString(3, pwd); 
+                ps = con.prepareStatement("INSERT INTO USERS VALUES (?,?)");
+                try {                       
+                    // set username
+                    ps.setString(1, user); 
+                    // set password
+                    ps.setString(2, pwd); 
 
-                        ps.execute();
-                        
-                        System.out.println("Added " + user);
-                    } finally {
-                        ps.close();
-                    }
-                } catch (SQLException ex) {
-                    System.out.println("Login error -->" + ex.getMessage());
+                    ps.execute();
 
+                    System.out.println("Added " + user);
                 } finally {
-                    DataConnect.close(con);
+                    ps.close();
                 }
+            } catch (SQLException ex) {
+                System.out.println("Login error -->" + ex.getMessage());
 
-                return "login";
+            } finally {
+                DataConnect.close(con);
+            }
+            
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "New account successfully created",
+                            "Please choose another user name"));
+            return "login";
     }
     
     // ************************* end not working *******************************
