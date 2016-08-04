@@ -1,0 +1,26 @@
+/* waifumaker sql statements */
+/* right click on the "Tables" folder and select "Execute Command", then paste and run. */
+
+CREATE TABLE USERS
+(
+    USERNAME VARCHAR(60) NOT NULL PRIMARY KEY,
+    PASSWORD VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE WAIFUS
+(
+    USERNAME VARCHAR(60),
+    NAME VARCHAR(60) NOT NULL PRIMARY KEY,
+    HAIR INT,
+    FACE INT,
+    OUTFIT INT,
+    EYES INT,
+    GOODT1 INT,
+    GOODT2 INT,
+    GOODT3 INT,
+    BADT INT
+);
+
+/* must then right click on "foreign keys" under WAIFUS, select "Execute Command"... */
+/* ... then paste and run: ALTER TABLE WAIFUS ADD FOREIGN KEY(USERNAME) REFERENCES USERS; */
+/* refresh DB, and view foreign key folder again. New key should be added. */
