@@ -30,6 +30,9 @@ public class UserNumberBean implements Serializable {
     Connection con = null;
     PreparedStatement ps = null;
     
+    HttpSession session = SessionUtils.getSession();
+    String user = (String) session.getAttribute("username"); //logged in user's username
+    
     String userNumber; //Name
     Integer hair;
     Integer face;
@@ -44,7 +47,9 @@ public class UserNumberBean implements Serializable {
     public String getResponse() throws SQLException {
 
         con = DataConnect.getConnection();
-
+        
+        System.out.println("user:" + user);
+        
         Random randomGR = new Random();
         randomInt1 = randomGR.nextInt(5);
         randomInt2 = randomGR.nextInt(5);
@@ -57,39 +62,44 @@ public class UserNumberBean implements Serializable {
         setBadT(randomInt4);
 
         try {
-            ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?,?)");
             try {
-                //name hair face hat outfit eyes
-                if (userNumber == null) {
-                    ps.setString(1, "waifu");
+                //user name hair face hat outfit eyes, goodT1 goodT2 goodT3 badT
+                if (user == null) {
+                    ps.setString(1, "testUser");
                 } else {
-                    ps.setString(1, userNumber);
+                    ps.setString(1, user);
+                } 
+                if (userNumber == null) {
+                    ps.setString(2, "waifu");
+                } else {
+                    ps.setString(2, userNumber);
                 }
                 if (hair == null) {
-                    ps.setInt(2, 1);
-                } else {
-                    ps.setInt(2, hair);
-                }
-                if (face == null) {
                     ps.setInt(3, 1);
                 } else {
-                    ps.setInt(3, face);
+                    ps.setInt(3, hair);
                 }
-                if (outfit == null) {
+                if (face == null) {
                     ps.setInt(4, 1);
                 } else {
-                    ps.setInt(4, outfit);
+                    ps.setInt(4, face);
                 }
-                if (eyes == null) {
+                if (outfit == null) {
                     ps.setInt(5, 1);
                 } else {
-
-                    ps.setInt(5, eyes);
+                    ps.setInt(5, outfit);
                 }
-                ps.setInt(6, randomInt1);
-                ps.setInt(7, randomInt2);
-                ps.setInt(8, randomInt3);
-                ps.setInt(9, randomInt4);
+                if (eyes == null) {
+                    ps.setInt(6, 1);
+                } else {
+
+                    ps.setInt(6, eyes);
+                }
+                ps.setInt(7, randomInt1);
+                ps.setInt(8, randomInt2);
+                ps.setInt(9, randomInt3);
+                ps.setInt(10, randomInt4);
 
                 // need to confirm whether this needs to be assigned to a variable. 
                 boolean execute = ps.execute();

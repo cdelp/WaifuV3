@@ -12,6 +12,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -25,6 +26,9 @@ public class AttemptsBean implements Serializable {
     // copied from login.java and changed first number from 1 to 2.
     private static final long serialVersionUID = 2094801825228386363L;
     
+    HttpSession session = SessionUtils.getSession();
+    String user = (String) session.getAttribute("username"); //logged in user's username
+    
     private Connection con = null;
     private PreparedStatement ps = null;
     private DataSource ds;
@@ -37,7 +41,8 @@ public class AttemptsBean implements Serializable {
         List<Attempts> list = new ArrayList<Attempts>();
 
         ResultSet resInfo = null;
-        String sqlstatement = "select * from WAIFUS";
+        //Only shows waifus associated with current username
+        String sqlstatement = "SELECT * FROM WAIFUS WHERE USERNAME = '" + user + "'";
         
         try {
             ps = con.prepareStatement(sqlstatement);
@@ -75,7 +80,7 @@ public class AttemptsBean implements Serializable {
         List<Attempts> list = new ArrayList<Attempts>();
 
         ResultSet resInfo = null;
-        String sqlstatement = "select * from WAIFUS where name = ";
+        String sqlstatement = "select * from WAIFUS where USERNAME = '" + user + "name = '";
         try {
             ps = con.prepareStatement(sqlstatement);
             try {
