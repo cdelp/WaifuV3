@@ -40,6 +40,12 @@ public class UserNumberBean implements Serializable {
     Integer outfit;
     String response;
     Integer goodt1, goodt2, goodt3, badt;
+    
+    // new add-ons
+    Integer hat;
+    Integer faceAcc;
+    Integer uBody;
+    Integer lBody;
 
     Integer randomInt1, randomInt2, randomInt3, randomInt4;
 
@@ -62,7 +68,7 @@ public class UserNumberBean implements Serializable {
         setBadT(randomInt4);
 
         try {
-            ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("insert into WAIFUS VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             try {
                 //user name hair face hat outfit eyes, goodT1 goodT2 goodT3 badT
                 if (user == null) {
@@ -93,8 +99,27 @@ public class UserNumberBean implements Serializable {
                 if (eyes == null) {
                     ps.setInt(6, 1);
                 } else {
-
                     ps.setInt(6, eyes);
+                }
+                if (hat == null) {
+                    ps.setInt(7, 0); //where 0 is a blank layer
+                } else {
+                    ps.setInt(7, hat);
+                }
+                if (faceAcc == null) {
+                    ps.setInt(8, 0); //where 0 is a blank layer
+                } else {
+                    ps.setInt(8, faceAcc);
+                }
+                if (uBody == null) {
+                    ps.setInt(9, 0); //where 0 is a blank layer
+                } else {
+                    ps.setInt(9, uBody);
+                }
+                if (lBody == null) {
+                    ps.setInt(10, 0); //where 0 is a blank layer
+                } else {
+                    ps.setInt(10, lBody);
                 }
                 ps.setInt(7, randomInt1);
                 ps.setInt(8, randomInt2);
@@ -154,7 +179,42 @@ public class UserNumberBean implements Serializable {
     public void setUserOutfit(Integer outfit) {
         this.outfit = outfit;
     }
+    
+    /** NEW ADD-ONS
+     * @return  */
+    public String getUserHat() {
+        return "hats/" + this.hat + ".png";
+    }
 
+    public void setUserHat(Integer hat) {
+        this.hat = hat;
+    }
+    
+    public String getUserFaceAcc() {
+        return "faceAcc/" + this.faceAcc + ".png";
+    }
+
+    public void setUserFaceAcc(Integer faceAcc) {
+        this.faceAcc = faceAcc;
+    }
+    
+    public String getUserUBody() {
+        return "upperBody/" + this.uBody + ".png";
+    }
+
+    public void setUserUBody(Integer uBody) {
+        this.uBody = uBody;
+    }
+    
+    public String getUserLBody() {
+        return "lowerBody/" + this.lBody + ".png";
+    }
+
+    public void setUserLBody(Integer lBody) {
+        this.lBody = lBody;
+    }
+    /* END NEW ADD-ONS */   
+    
     public void setGoodT1(Integer goodt1) {
         this.goodt1 = goodt1;
     }
@@ -254,15 +314,23 @@ public class UserNumberBean implements Serializable {
         setUserFace(1);
         setUserOutfit(1);
         setUserEyes(1);
+        setUserHat(0);
+        setUserFaceAcc(0);
+        setUserUBody(0);
+        setUserLBody(0);
 
     }
 
-    public void setWaifu(String name, Integer hair, Integer eyes, Integer face, Integer outfit) {
+    public void setWaifu(String name, Integer hair, Integer eyes, Integer face, Integer outfit, Integer hat, Integer facAcc, Integer uBody, Integer lBody) {
         setUserNumber(name);
         setUserHair(hair);
         setUserFace(face);
         setUserOutfit(outfit);
         setUserEyes(eyes);
+        setUserHat(hat);
+        setUserFaceAcc(facAcc);
+        setUserUBody(uBody);
+        setUserLBody(lBody);
 
     }
 }

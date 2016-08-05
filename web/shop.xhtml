@@ -22,19 +22,39 @@
                                  value="Logout"></h:commandButton>
         </h:form>   
         
-        
+        <!-- z-indexes changed to accommodate new layers -->       
         <!-- Sets default "face" which is just the body -->
         <div id  ="stuff" style = "text-align:center; left: 1150px; top: 150px; position: relative;  padding-right: 30%; padding-top: 3%">
             #{UserNumberBean.setUserFace(2)}
 
+            <!-- Hat layer -->
+            <div id="hat" style ="position: absolute; left: 0px; top: 0px;   z-index: 8;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserHat()}" width = "244" height = "288" style = "border: 3px solid black; "/>
+            </div>
+            
             <!-- Dynamically grabs hair/eyes/outfit/face as user changes it -->
-            <div id="hair" style ="position: absolute; left: 0px; top: 0px;   z-index: 3;" >
+            <div id="hair" style ="position: absolute; left: 0px; top: 0px;   z-index: 7;" >
                 <h:graphicImage value ="#{UserNumberBean.getUserHair()}" width = "244" height = "288" style = "border: 3px solid black; "/>
             </div>
+            
+             <!-- Facial Accessory layer -->
+            <div id="faceAcc" style ="position: absolute; left: 0px; top: 0px;   z-index: 6;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserFaceAcc()}" width = "244" height = "288" style = "border: 3px solid black; "/>
+            </div>
 
-            <div id="eyes" style ="position: absolute; left: 0px; top: 0px;  z-index: 4;" >
+            <div id="eyes" style ="position: absolute; left: 0px; top: 0px;  z-index: 5;" >
 
                 <h:graphicImage value ="#{UserNumberBean.getUserEyes()}" width = "244" height = "288" style = "border: 3px solid black"/>
+            </div>
+             
+             <!-- Upper body accessory layer -->
+            <div id="uBody" style ="position: absolute; left: 0px; top: 0px;   z-index: 4;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserUBody()}" width = "244" height = "288" style = "border: 3px solid black; "/>
+            </div>
+             
+             <!-- Lower body accessory layer -->
+            <div id="lBody" style ="position: absolute; left: 0px; top: 0px;   z-index: 3;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserLBody()}" width = "244" height = "288" style = "border: 3px solid black; "/>
             </div>
 
             <div id="outfit" style ="position: absolute; left: 0px; top: 0px; z-index: 2" >
@@ -137,7 +157,7 @@
             <h2>Welcome!!! Please buy stuff!</h2>
         </h:form>  
         
-        <!-- Test purchase selection -->
+        <!-- Hats, Test purchase selection -->
         <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
             <div id="hairs2" style ="position: relative">
                 <h:commandLink action ="#{UserNumberBean.setUserHair(11)}">
@@ -151,8 +171,9 @@
                 </h:commandLink>
             </div>
         </h:form>
+        <br></br>
         
-        <!-- Test purchase selection -->
+        <!-- Face, Test purchase selection -->
         <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
             <div id="hairs2" style ="position: relative">
                 <h:commandLink action ="#{UserNumberBean.setUserHair(14)}">
@@ -166,8 +187,9 @@
                 </h:commandLink>
             </div>
         </h:form>
+        <br></br>
         
-        <!-- Test purchase selection -->
+        <!-- Upper body, Test purchase selection -->
         <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
             <div id="hairs2" style ="position: relative">
                 <h:commandLink action ="#{UserNumberBean.setUserHair(17)}">
@@ -181,6 +203,23 @@
                 </h:commandLink>
             </div>
         </h:form>
+        <br></br>
+        
+         <!-- Lower body, Test purchase selection -->
+        <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
+            <div id="hairs2" style ="position: relative">
+                <h:commandLink action ="#{UserNumberBean.setUserHair(17)}">
+                    <img src= "items/item_C1b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(18)}">
+                    <img src= "items/item_C2b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHair(19)}">
+                    <img src= "items/item_C3b.png" />
+                </h:commandLink>
+            </div>
+        </h:form>
+        <br></br>
         
         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick" />
             <table align="center">

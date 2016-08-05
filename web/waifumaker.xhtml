@@ -26,6 +26,15 @@
         <!-- Sets default "face" which is just the body -->
         <div id  ="stuff" style = "text-align:center; left: 1150px; top: 150px; position: relative;  padding-right: 30%; padding-top: 3%">
             #{UserNumberBean.setUserFace(2)}
+            
+            <!-- TEMPORARY CODE -->
+            <!-- Needed to set accessory layers until final display method decided -->
+            <!-- selection 1 is a transparent layer. -->
+            #{UserNumberBean.setUserHat(0)}
+            #{UserNumberBean.setUserFaceAcc(0)}
+            #{UserNumberBean.setUserUBody(0)}
+            #{UserNumberBean.setUserLBody(0)}
+        
 
             <!-- Dynamically grabs hair/eyes/outfit/face as user changes it -->
             <div id="hair" style ="position: absolute; left: 0px; top: 0px;   z-index: 3;" >
@@ -129,8 +138,8 @@
                 </h:commandLink>
             </div>
             <br></br>
-        </h:form>       
-        
+        </h:form>  
+               
         <!-- Button to send all current data to database -->
         <h:form style ="text-align: center">
             <h1>Name :</h1> <h:inputText id="userNumber" size="15" maxlength="20" value="#{UserNumberBean.userNumber}" />

@@ -72,7 +72,7 @@ public class Login implements Serializable {
         if (valid) {
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", user);
-            return "index"; // changed this from "admin"
+            return "index";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
@@ -83,7 +83,6 @@ public class Login implements Serializable {
         }
     }
     
-    // ************************* UID needs to be figured out *******************************
     //create new user login
     public String createUsernamePassword() {
         
@@ -93,8 +92,7 @@ public class Login implements Serializable {
         try {
             con = DataConnect.getConnection();  
             
-            // failed attempt to check for username's existence before allowing another user
-            // to use add the same one to the db
+           // checks for user name in DB before allowing it to be added.
             ps = con.prepareStatement("SELECT USERNAME FROM USERS WHERE USERNAME = '" + user + "'");
             try {
                 //ps.setString(1, user);
@@ -141,8 +139,6 @@ public class Login implements Serializable {
                             "Please choose another user name"));
             return "login";
     }
-    
-    // ************************* end not working *******************************
 
     //logout event, invalidate session
     public String logout() {

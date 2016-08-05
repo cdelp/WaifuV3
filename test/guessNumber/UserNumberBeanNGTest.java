@@ -279,8 +279,12 @@ public class UserNumberBeanNGTest {
         Integer eyes = 3;
         Integer face = 3;
         Integer outfit = 3;
+        Integer hat = 1;
+        Integer facAcc = 1;
+        Integer uBody = 1;
+        Integer lBody = 1;
     //    UserNumberBean instance = new UserNumberBean();
-        instance.setWaifu(name, hair, eyes, face, outfit);
+        instance.setWaifu(name, hair, eyes, face, outfit, hat, facAcc, uBody, lBody);
     }
     
 }
