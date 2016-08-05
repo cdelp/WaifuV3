@@ -20,7 +20,7 @@
         <h:form>
             <h:commandButton action="#{login.logout}"
                                  value="Logout"></h:commandButton>
-        </h:form>   
+        </h:form>         
         
         <!-- z-indexes changed to accommodate new layers -->       
         <!-- Sets default "face" which is just the body -->
@@ -43,7 +43,6 @@
             </div>
 
             <div id="eyes" style ="position: absolute; left: 0px; top: 0px;  z-index: 5;" >
-
                 <h:graphicImage value ="#{UserNumberBean.getUserEyes()}" width = "244" height = "288" style = "border: 3px solid black"/>
             </div>
             
@@ -65,92 +64,6 @@
                 <h:graphicImage value ="#{UserNumberBean.getUserFace()}" width = "244" height = "288" style = "border: 3px solid black;"/>
             </div>
         </div>
-
-
-        <!-- Long hair selection -->
-<!--        <h:form style = "background-color: white;width: 680px; border: 3px solid black; position: relative; left: 18%">
-
-            <div id="hairs1" style =" position: relative;">
-                <h:commandLink action ="#{UserNumberBean.setUserHair(3)}">
-                    <img src= "hair/3.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(1)}">
-                    <img src= "hair/1.png" />
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(2)}">
-                    <img src= "hair/2.png" />
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(4)}">
-                    <img src= "hair/4.png" />
-                </h:commandLink>
-
-            </div> 
-        </h:form>  
-
-        <br></br>  -->
-
-        <!-- Short hair selection -->
- <!--       <h:form style = "background-color: white;width: 425px; border: 3px solid black; position: relative; left: 18%">
-            <div id="hairs2" style ="position: relative">
-                <h:commandLink action ="#{UserNumberBean.setUserHair(7)}">
-                    <img src= "hair/7b.png" />
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(8)}">
-                    <img src= "hair/8b.png" />
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(9)}">
-                    <img src= "hair/9b.png" />
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(10)}">
-                    <img src= "hair/10b.png" />
-                </h:commandLink>
-            </div>
-        </h:form>
-
-        <br></br>  -->
-
-        <!-- Eyes selection -->
-<!--        <h:form  style = "background-color: white; width: 277px; position: relative; border: 3px solid black; position: relative; left: 18%">
-            <div id="eyeballs"  style= "position:relative; ">
-                <h:commandLink action ="#{UserNumberBean.setUserEyes(3)}" >
-                    <img src= "eyes/3b.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserEyes(1)}">
-                    <img src= "eyes/1b.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserEyes(2)}">
-                    <img src= "eyes/2b.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserEyes(4)}">
-                    <img src= "eyes/4b.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserEyes(5)}">
-                    <img src= "eyes/5b.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserEyes(6)}">
-                    <img src= "eyes/6b.png"/>
-                </h:commandLink>
-            </div>
-        </h:form>
-
-        <br></br>  -->
-
-        <!-- Outfit selection -->
- <!--       <h:form style = "background-color: white;width: 279px; height: 100; border: 3px solid black; position: relative; left: 18%">
-            <div id="outfits" style ="position: relative">
-                <h:commandLink action ="#{UserNumberBean.setUserOutfit(2)}">
-                    <img src= "outfit/2b.png"  />
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserOutfit(3)}">
-                    <img src= "outfit/3b.png"/>
-                </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserOutfit(1)}">
-                    <img src= "outfit/1b.png"  />
-                </h:commandLink>
-            </div>
-            <br></br>
-        </h:form>  -->
-        
        
         <!-- Temporary layout, for testing only -->
         <h:form style =" text-align: center; position: relative; right: 22%">
@@ -168,6 +81,9 @@
                 </h:commandLink>
                 <h:commandLink action ="#{UserNumberBean.setUserHat(3)}">
                     <img src= "hats/3b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserHat(0)}">
+                    <img src= "hats/remove.png" />
                 </h:commandLink>
             </div>
         </h:form>
@@ -188,6 +104,9 @@
                 <h:commandLink action ="#{UserNumberBean.setUserFaceAcc(4)}">
                     <img src= "faceAcc/4b.png" />
                 </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserFaceAcc(0)}">
+                    <img src= "faceAcc/remove.png" />
+                </h:commandLink>
             </div>
         </h:form>
         <br></br>
@@ -207,6 +126,9 @@
                 <h:commandLink action ="#{UserNumberBean.setUserUBody(4)}">
                     <img src= "upperBody/4b.png" />
                 </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserUBody(0)}">
+                    <img src= "upperBody/remove.png" />
+                </h:commandLink>
             </div>
         </h:form>
         <br></br>
@@ -222,6 +144,9 @@
                 </h:commandLink>
                 <h:commandLink action ="#{UserNumberBean.setUserLBody(3)}">
                     <img src= "lowerBody/3b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserLBody(0)}">
+                    <img src= "lowerBody/remove.png" />
                 </h:commandLink>
             </div>
         </h:form>
