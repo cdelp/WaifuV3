@@ -46,17 +46,17 @@
 
                 <h:graphicImage value ="#{UserNumberBean.getUserEyes()}" width = "244" height = "288" style = "border: 3px solid black"/>
             </div>
+            
+             <!-- Lower body accessory layer -->
+            <div id="lBody" style ="position: absolute; left: 0px; top: 0px;   z-index: 4;" >
+                <h:graphicImage value ="#{UserNumberBean.getUserLBody()}" width = "244" height = "288" style = "border: 3px solid black; "/>
+            </div>
              
              <!-- Upper body accessory layer -->
-            <div id="uBody" style ="position: absolute; left: 0px; top: 0px;   z-index: 4;" >
+            <div id="uBody" style ="position: absolute; left: 0px; top: 0px;   z-index: 3;" >
                 <h:graphicImage value ="#{UserNumberBean.getUserUBody()}" width = "244" height = "288" style = "border: 3px solid black; "/>
             </div>
              
-             <!-- Lower body accessory layer -->
-            <div id="lBody" style ="position: absolute; left: 0px; top: 0px;   z-index: 3;" >
-                <h:graphicImage value ="#{UserNumberBean.getUserLBody()}" width = "244" height = "288" style = "border: 3px solid black; "/>
-            </div>
-
             <div id="outfit" style ="position: absolute; left: 0px; top: 0px; z-index: 2" >
                 <h:graphicImage value ="#{UserNumberBean.getUserOutfit()}" width = "244" height = "288" style = "border: 3px solid black"/>
             </div>
@@ -176,14 +176,17 @@
         <!-- Face, Test purchase selection -->
         <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
             <div id="faceAcc" style ="position: relative">
-                <h:commandLink action ="#{UserNumberBean.setUserHair(14)}">
+                <h:commandLink action ="#{UserNumberBean.setUserFaceAcc(1)}">
                     <img src= "faceAcc/1b.png" />
                 </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(15)}">
+                <h:commandLink action ="#{UserNumberBean.setUserFaceAcc(2)}">
                     <img src= "faceAcc/2b.png" />
                 </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(16)}">
+                <h:commandLink action ="#{UserNumberBean.setUserFaceAcc(3)}">
                     <img src= "faceAcc/3b.png" />
+                </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserFaceAcc(4)}">
+                    <img src= "faceAcc/4b.png" />
                 </h:commandLink>
             </div>
         </h:form>
@@ -201,26 +204,29 @@
                 <h:commandLink action ="#{UserNumberBean.setUserUBody(3)}">
                     <img src= "upperBody/3b.png" />
                 </h:commandLink>
+                <h:commandLink action ="#{UserNumberBean.setUserUBody(4)}">
+                    <img src= "upperBody/4b.png" />
+                </h:commandLink>
             </div>
         </h:form>
         <br></br>
-        
+               
          <!-- Lower body, Test purchase selection -->
         <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
             <div id="lBody" style ="position: relative">
-                <h:commandLink action ="#{UserNumberBean.setUserHair(17)}">
+                <h:commandLink action ="#{UserNumberBean.setUserLBody(1)}">
                     <img src= "lowerBody/1b.png" />
                 </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(18)}">
+                <h:commandLink action ="#{UserNumberBean.setUserLBody(2)}">
                     <img src= "lowerBody/2b.png" />
                 </h:commandLink>
-                <h:commandLink action ="#{UserNumberBean.setUserHair(19)}">
+                <h:commandLink action ="#{UserNumberBean.setUserLBody(3)}">
                     <img src= "lowerBody/3b.png" />
                 </h:commandLink>
             </div>
         </h:form>
         <br></br>
-        
+                
         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick" />
             <table align="center">
             <tbody>
