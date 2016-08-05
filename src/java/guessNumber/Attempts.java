@@ -13,6 +13,12 @@ public class Attempts {
     public Integer eyes;
     public Integer goodt1, goodt2, goodt3, badt;
 
+    // new add-ons
+    public Integer hat;
+    public Integer faceAcc;
+    public Integer uBody;
+    public Integer lBody;
+    
 //Change to name
     public String getName() {
         return name;
@@ -88,5 +94,39 @@ public class Attempts {
 
     public Integer getBadT() {
         return badt;
+    }
+    
+    //New Add-ons
+    public void setHat(Integer hat) {
+        this.hat = hat;
+    }
+
+    public Integer getHat() {
+        return hat;
+    }
+
+    public void setFaceAcc(Integer faceAcc) {
+        this.faceAcc = faceAcc;
+    }
+
+    public Integer getFaceAcc() {
+        return faceAcc;
+    }
+
+    public void setUBody(Integer uBody) {
+        this.uBody = uBody;
+    }
+
+    public Integer getUBody() {
+        return uBody;
+    }
+
+    //Bad trait
+    public void setLBody(Integer lBody) {
+        this.lBody = lBody;
+    }
+
+    public Integer getLBody() {
+        return lBody;
     }
 }

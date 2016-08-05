@@ -56,6 +56,10 @@ public class AttemptsBean implements Serializable {
                     att.setHair(resInfo.getInt("HAIR"));
                     att.setName(resInfo.getString("NAME"));
                     att.setOutfit(resInfo.getInt("OUTFIT"));
+                    att.setHat(resInfo.getInt("HAT"));
+                    att.setFaceAcc(resInfo.getInt("FACACC"));
+                    att.setUBody(resInfo.getInt("UBODY"));
+                    att.setLBody(resInfo.getInt("LBODY"));
                     att.setGoodT1(resInfo.getInt("GOODT1"));
                     att.setGoodT2(resInfo.getInt("GOODT2"));
                     att.setGoodT3(resInfo.getInt("GOODT3"));
@@ -94,6 +98,10 @@ public class AttemptsBean implements Serializable {
                     att.setHair(resInfo.getInt("HAIR"));
                     att.setName(resInfo.getString("NAME"));
                     att.setOutfit(resInfo.getInt("OUTFIT"));
+                    att.setHat(resInfo.getInt("HAT"));
+                    att.setFaceAcc(resInfo.getInt("FACACC"));
+                    att.setUBody(resInfo.getInt("UBODY"));
+                    att.setLBody(resInfo.getInt("LBODY"));
                     att.setGoodT1(resInfo.getInt("GOODT1"));
                     att.setGoodT2(resInfo.getInt("GOODT2"));
                     att.setGoodT3(resInfo.getInt("GOODT3"));

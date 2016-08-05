@@ -121,10 +121,10 @@ public class UserNumberBean implements Serializable {
                 } else {
                     ps.setInt(10, lBody);
                 }
-                ps.setInt(7, randomInt1);
-                ps.setInt(8, randomInt2);
-                ps.setInt(9, randomInt3);
-                ps.setInt(10, randomInt4);
+                ps.setInt(11, randomInt1);
+                ps.setInt(12, randomInt2);
+                ps.setInt(13, randomInt3);
+                ps.setInt(14, randomInt4);
 
                 // need to confirm whether this needs to be assigned to a variable. 
                 boolean execute = ps.execute();

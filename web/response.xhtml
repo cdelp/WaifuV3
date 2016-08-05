@@ -17,11 +17,12 @@
 
         <h1><h:outputText escape="false" value="#{UserNumberBean.response}"/></h1>
 
+        <!-- new layers added, and z-indexes changed -->
         <div id  ="stuff" style = "padding-left: 45%; position: relative">
-            <div id="hair" style ="position: absolute;   z-index: 3;" >
+            <div id="hair" style ="position: absolute;   z-index: 7;" >
                 <h:graphicImage value ="#{UserNumberBean.getUserHair()}" style = "border: 3px solid black; " />
             </div>
-            <div id="eyes" style ="position: absolute;  z-index: 4;" >
+            <div id="eyes" style ="position: absolute;  z-index: 3;" >
                 <h:graphicImage value ="#{UserNumberBean.getUserEyes()}" style = "border: 3px solid black; " />
             </div>
             <div id="outfit" style ="position: absolute; z-index: 2" >
@@ -29,6 +30,18 @@
             </div>
             <div id="faces" style ="position: absolute;  z-index: 1" >
                 <h:graphicImage value ="#{UserNumberBean.getUserFace()}" style = "border: 3px solid black; "/>
+            </div>
+            <div id="hats" style ="position: absolute;  z-index: 8" >
+                <h:graphicImage value ="#{UserNumberBean.getUserHat()}" style = "border: 3px solid black; "/>
+            </div>
+            <div id="faceAcc" style ="position: absolute;  z-index: 4" >
+                <h:graphicImage value ="#{UserNumberBean.getUserFaceAcc()}" style = "border: 3px solid black; "/>
+            </div>
+            <div id="upperBody" style ="position: absolute;  z-index: 5" >
+                <h:graphicImage value ="#{UserNumberBean.getUserUBody()}" style = "border: 3px solid black; "/>
+            </div>
+            <div id="lowerBody" style ="position: absolute;  z-index: 6" >
+                <h:graphicImage value ="#{UserNumberBean.getUserLBody()}" style = "border: 3px solid black; "/>
             </div>
             <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 

@@ -78,6 +78,10 @@
                         #{UserNumberBean.setUserEyes(c.eyes)}  
                         #{UserNumberBean.setUserOutfit(c.outfit)}  
                         #{UserNumberBean.setUserNumber(c.name)}
+                        #{UserNumberBean.setUserHat(c.hat)}
+                        #{UserNumberBean.setUserFaceAcc(c.faceAcc)}
+                        #{UserNumberBean.setUserUBody(c.UBody)}
+                        #{UserNumberBean.setUserLBody(c.LBody)}
                         #{UserNumberBean.setGoodT1(c.goodT1)}
                         #{UserNumberBean.setGoodT2(c.goodT2)}
                         #{UserNumberBean.setGoodT3(c.goodT3)}
@@ -86,17 +90,29 @@
 
                     <div id = "meow" style ="width: 163px; height: 200px; border: 3px solid black; text-align: center; ">
                         <div id="stuff">
-                            <div id="hair" style ="position: absolute;   z-index: 3; " >
+                            <div id="hair" style ="position: absolute;   z-index: 7; " >
                                 <h:graphicImage value ="#{UserNumberBean.getUserHair()}"   />
                             </div>
-                            <div id="eyes" style ="position: absolute;  z-index: 4;" >
+                            <div id="eyes" style ="position: absolute;  z-index: 2;" >
                                 <h:graphicImage value ="#{UserNumberBean.getUserEyes()}"  />
                             </div>
-                            <div id="outfit" style ="position: absolute; z-index: 2" >
+                            <div id="outfit" style ="position: absolute; z-index: 3" >
                                 <h:graphicImage value ="#{UserNumberBean.getUserOutfit()}"/>
                             </div>
                             <div id="faces" style ="position: absolute;  z-index: 1" >
                                 <h:graphicImage value ="#{UserNumberBean.getUserFace()}"/>
+                            </div>
+                            <div id="hat" style ="position: absolute;  z-index: 8" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserHat()}"/>
+                            </div>
+                            <div id="faceAcc" style ="position: absolute;  z-index: 4" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserFaceAcc()}"/>
+                            </div>
+                            <div id="upperBody" style ="position: absolute;  z-index: 5" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserUBody()}"/>
+                            </div>
+                            <div id="lowerBody" style ="position: absolute;  z-index: 6" >
+                                <h:graphicImage value ="#{UserNumberBean.getUserLBody()}"/>
                             </div>
                             <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                             <h:outputText escape="false" value="#{UserNumberBean.getUserNumber()}"/>
