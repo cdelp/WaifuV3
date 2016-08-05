@@ -15,12 +15,12 @@ CREATE TABLE WAIFUS
     FACE INT,
     OUTFIT INT,
     EYES INT,
+    HAT INT,
+    FACACC INT,
+    UBODY INT,
+    LBODY INT,
     GOODT1 INT,
     GOODT2 INT,
     GOODT3 INT,
     BADT INT
 );
-
-/* must then right click on "foreign keys" under WAIFUS, select "Execute Command"... */
-/* ... then paste and run: ALTER TABLE WAIFUS ADD FOREIGN KEY(USERNAME) REFERENCES USERS; */
-/* refresh DB, and view foreign key folder again. New key should be added. */
