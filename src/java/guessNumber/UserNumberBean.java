@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Random;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -305,7 +306,7 @@ public class UserNumberBean implements Serializable {
     }
 
     public void recordTransaction(String item_id) throws SQLException {
-        
+
         // TEMPORARY SOLUATION, actual application would use PayPal purchase id.
         Date timeStamp = new Date();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -313,28 +314,32 @@ public class UserNumberBean implements Serializable {
         
         con = DataConnect.getConnection();
         
-        // NOT WORKING YET
-        // checks to see if user already purchased the item.
+        // selects all items owned by the current user
         ps = con.prepareStatement("SELECT ITEM_ID FROM TRANSACTIONS WHERE USERNAME = '" + user + "'");
         try {
-            //ps.setString(1, user);
-
+            
             ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                
+                String id = rs.getString("ITEM_ID");
+                System.out.println("item id: " + id);
+            
+                // check to see if item already purchased by current user
+                if (id.equals(item_id)) {
 
-            if (rs.next()) {
-                //result found, means username already exists
-                FacesContext.getCurrentInstance().addMessage(
-                null,
-                new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                        "Sorry, but you already own this item.",
-                        "Please choose another user name"));
+                    FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "Sorry, but you already own this item.",
+                            "Please choose another user name"));
+                    return;
+                }
             }
             } finally {
                 ps.close();
             }
         
-        // NEED TO MOVE THIS INSIDE AN ELSE STATEMENT or something to keep it from
-        // still adding to DB even if it's a duplicate
         try {
             ps = con.prepareStatement("insert into TRANSACTIONS VALUES (?,?,?)");
             try {
