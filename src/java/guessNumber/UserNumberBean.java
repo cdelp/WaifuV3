@@ -13,8 +13,11 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -46,6 +49,7 @@ public class UserNumberBean implements Serializable {
     Integer faceAcc;
     Integer uBody;
     Integer lBody;
+    String recordTransaction;
 
     Integer randomInt1, randomInt2, randomInt3, randomInt4;
 
@@ -300,6 +304,73 @@ public class UserNumberBean implements Serializable {
         return "error";
     }
 
+    public void recordTransaction(String item_id) throws SQLException {
+        
+        // TEMPORARY SOLUATION, actual application would use PayPal purchase id.
+        Date timeStamp = new Date();
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String trans_id = df.format(timeStamp);
+        
+        con = DataConnect.getConnection();
+        
+        // NOT WORKING YET
+        // checks to see if user already purchased the item.
+        ps = con.prepareStatement("SELECT ITEM_ID FROM TRANSACTIONS WHERE USERNAME = '" + user + "'");
+        try {
+            //ps.setString(1, user);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                //result found, means username already exists
+                FacesContext.getCurrentInstance().addMessage(
+                null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "Sorry, but you already own this item.",
+                        "Please choose another user name"));
+            }
+            } finally {
+                ps.close();
+            }
+        
+        // NEED TO MOVE THIS INSIDE AN ELSE STATEMENT or something to keep it from
+        // still adding to DB even if it's a duplicate
+        try {
+            ps = con.prepareStatement("insert into TRANSACTIONS VALUES (?,?,?)");
+            try {
+                //user name hair face hat outfit eyes, goodT1 goodT2 goodT3 badT
+                if (trans_id == null) {
+                    ps.setString(1, "NoTime");
+                } else {
+                    ps.setString(1, trans_id);
+                } 
+                if (user == null) {
+                    ps.setString(2, "NoUser");
+                } else {
+                    ps.setString(2, user);
+                }
+                if (item_id == null) {
+                    ps.setString(3, "NoID");
+                } else {
+                    ps.setString(3, item_id);
+                }
+            // need to confirm whether this needs to be assigned to a variable. 
+                boolean execute = ps.execute();
+            } finally {
+                        ps.close();
+                      } 
+        }finally {
+                con.close();
+                }
+        
+        // trying to print purchase confirmation to screen
+        FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "Thank you for purchasing: " + item_id,
+                            "Please enter correct username and Password"));       
+    }
+    
     public void setWaifu(String name, Integer hair, Integer eyes, Integer face, Integer outfit, Integer hat, Integer facAcc, Integer uBody, Integer lBody) {
         setUserNumber(name);
         setUserHair(hair);

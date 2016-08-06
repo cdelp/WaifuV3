@@ -87,6 +87,10 @@
                 </h:commandLink>
             </div>
         </h:form>
+        <h:form>
+            <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserHat())}"
+                                 value="Purchase current hat"></h:commandButton>
+        </h:form>
         <br></br>
         
         <!-- Face, Test purchase selection -->
@@ -108,6 +112,10 @@
                     <img src= "faceAcc/remove.png" />
                 </h:commandLink>
             </div>
+        </h:form>
+        <h:form>
+            <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserFaceAcc())}"
+                                 value="Purchase current facial item"></h:commandButton>
         </h:form>
         <br></br>
         
@@ -131,6 +139,10 @@
                 </h:commandLink>
             </div>
         </h:form>
+        <h:form>
+            <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserUBody())}"
+                                 value="Purchase current top accessory"></h:commandButton>
+        </h:form>
         <br></br>
                
          <!-- Lower body, Test purchase selection -->
@@ -150,8 +162,12 @@
                 </h:commandLink>
             </div>
         </h:form>
+        <h:form>
+           <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserLBody())}"
+                                value="Purchase current bottom accessory"></h:commandButton>
+       </h:form>
         <br></br>
-                
+                       
         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick" />
             <table align="center">
             <tbody>
