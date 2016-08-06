@@ -300,6 +300,18 @@ public class UserNumberBean implements Serializable {
         return "error";
     }
 
+    public void setWaifu(String name, Integer hair, Integer eyes, Integer face, Integer outfit, Integer hat, Integer facAcc, Integer uBody, Integer lBody) {
+        setUserNumber(name);
+        setUserHair(hair);
+        setUserFace(face);
+        setUserOutfit(outfit);
+        setUserEyes(eyes);
+        setUserHat(hat);
+        setUserFaceAcc(facAcc);
+        setUserUBody(uBody);
+        setUserLBody(lBody);
+    }
+    
     /**
      * Creates a new instance of UserNumberBean
      *
@@ -321,16 +333,5 @@ public class UserNumberBean implements Serializable {
 
     }
 
-    public void setWaifu(String name, Integer hair, Integer eyes, Integer face, Integer outfit, Integer hat, Integer facAcc, Integer uBody, Integer lBody) {
-        setUserNumber(name);
-        setUserHair(hair);
-        setUserFace(face);
-        setUserOutfit(outfit);
-        setUserEyes(eyes);
-        setUserHat(hat);
-        setUserFaceAcc(facAcc);
-        setUserUBody(uBody);
-        setUserLBody(lBody);
-
-    }
+    
 }

@@ -87,57 +87,69 @@ public class Login implements Serializable {
     public String createUsernamePassword() {
         
         Connection con = null;
-        PreparedStatement ps = null;
-               
-        try {
-            con = DataConnect.getConnection();  
-            
-           // checks for user name in DB before allowing it to be added.
-            ps = con.prepareStatement("SELECT USERNAME FROM USERS WHERE USERNAME = '" + user + "'");
-            try {
-                //ps.setString(1, user);
-
-                ResultSet rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    //result found, means username already exists
-                    FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "User name already exists",
-                            "Please choose another user name"));
-                    return "login";
-                }
-                } finally {
-                    ps.close();
-                }
+        PreparedStatement ps;
         
-                ps = con.prepareStatement("INSERT INTO USERS VALUES (?,?)");
-                try {                       
-                    // set username
-                    ps.setString(1, user); 
-                    // set password
-                    ps.setString(2, pwd); 
-
-                    ps.execute();
-
-                    System.out.println("Added " + user);
-                } finally {
-                    ps.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("Login error -->" + ex.getMessage());
-
-            } finally {
-                DataConnect.close(con);
-            }
+        System.out.println("user: " + user + ", pwd: " + pwd);
+               
+        if((user!= null && pwd != null) && (!user.isEmpty() && !pwd.isEmpty())) {
             
+            try {
+                con = DataConnect.getConnection();  
+
+               // checks for user name in DB before allowing it to be added.
+                ps = con.prepareStatement("SELECT USERNAME FROM USERS WHERE USERNAME = '" + user + "'");
+                try {
+                    //ps.setString(1, user);
+
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        //result found, means username already exists
+                        FacesContext.getCurrentInstance().addMessage(
+                        null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "User name already exists",
+                                "Please choose another user name"));
+                        return "login";
+                    }
+                    } finally {
+                        ps.close();
+                    }
+
+                    ps = con.prepareStatement("INSERT INTO USERS VALUES (?,?)");
+                    try {                       
+                        // set username
+                        ps.setString(1, user); 
+                        // set password
+                        ps.setString(2, pwd); 
+
+                        ps.execute();
+
+                        System.out.println("Added " + user);
+                    } finally {
+                        ps.close();
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("Login error -->" + ex.getMessage());
+
+                } finally {
+                    DataConnect.close(con);
+                }
+
+                FacesContext.getCurrentInstance().addMessage(
+                        null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "New account successfully created",
+                                "Please choose another user name"));               
+        } else {
             FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "New account successfully created",
-                            "Please choose another user name"));
-            return "login";
+                        null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "Please enter a username and password.",
+                                "Please choose another user name"));
+        }  
+        
+        return "login";
     }
 
     //logout event, invalidate session

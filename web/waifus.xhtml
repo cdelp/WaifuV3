@@ -62,7 +62,7 @@
                         </br>
                         <br><b>Her Negative Traits Are: </b></br>
                         <br> <h:outputText escape="false" value="#{UserNumberBean.getBadT()}"/> <br></br><br></br></br>
-                    </div>
+                    </div>                                                         
                 </h:column>
             </h:dataTable>
         </div>
@@ -119,7 +119,15 @@
 
                         </div>
                     </div>
-
+                    
+                    <!-- TESTING, want to click waifu to go to shop -->
+                    <h:form>
+                        <h:commandButton id="shopping" value="Take #{UserNumberBean.getUserNumber()} shopping?" 
+                            action="shop" class="nameButtons" 
+                            actionListener="Need to set waifu here, but says method UserNumberBean.setWaifu not found"/>
+                                               
+                    </h:form>  
+                    
                 </h:column>
 
             </h:dataTable>
