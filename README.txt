@@ -22,6 +22,8 @@ Welcome to Waifu Maker 3.0! The place where you are able to make the Waifu of yo
   - New user account setup - Christopher Delp
 4) Static Analysis
   - Code improvments recommended by tool - Christopher Delp
+5) Improvements
+  - Shop - Christoper Delp
 
 ---
 
