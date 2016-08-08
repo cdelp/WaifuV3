@@ -26,15 +26,7 @@ Welcome to Waifu Maker 3.0! The place where you are able to make the Waifu of yo
 ---
 
 #### Tasks To Be Completed
-1) Shop - Christopher Delp
-2) Database
-  - Create new databases with secure setup
-    + Password (MD5 Hash)
-  - Connect to PayPal - Christie Reindle
-  - Connect to login - Cynthia Okuno
-  - Integrate with shop - Christopher Delp
-3) Host code on website - Cynthia Okuno
-4) Sanitize user input - Christie Reindle
+---
 
 ---
 
