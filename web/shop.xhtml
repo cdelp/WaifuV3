@@ -19,7 +19,7 @@
 
         <h:form>
             <h:commandButton action="#{login.logout}"
-                                 value="Logout"></h:commandButton>
+                                 image ="button/logout.png"></h:commandButton>
         </h:form>         
         
         <!-- z-indexes changed to accommodate new layers -->       
@@ -66,9 +66,10 @@
         </div>
        
         <!-- Temporary layout, for testing only -->
-        <h:form style =" text-align: center; position: relative; right: 22%">
+        <h:form style =" text-align: center; position: relative; right: 22%">            
             <h2>Welcome!!! Please buy stuff!</h2>
         </h:form>  
+        <h:messages globalOnly="true" errorClass="err" warnClass="warn" infoClass="info"></h:messages>
         
         <!-- Hats, Test purchase selection -->
         <h:form style = "background-color: white;width: 340px; border: 3px solid black; position: relative; left: 18%">
@@ -89,7 +90,7 @@
         </h:form>
         <h:form>
             <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserHat())}"
-                                 value="Purchase current hat"></h:commandButton>
+                                 image ="button/purchasehat.png"></h:commandButton>
         </h:form>
         <br></br>
         
@@ -115,7 +116,7 @@
         </h:form>
         <h:form>
             <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserFaceAcc())}"
-                                 value="Purchase current facial item"></h:commandButton>
+                                 image ="button/purchasefacial.png"></h:commandButton>
         </h:form>
         <br></br>
         
@@ -141,7 +142,7 @@
         </h:form>
         <h:form>
             <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserUBody())}"
-                                 value="Purchase current top accessory"></h:commandButton>
+                                 image ="button/purchasetop.png"></h:commandButton>
         </h:form>
         <br></br>
                
@@ -164,7 +165,7 @@
         </h:form>
         <h:form>
            <h:commandButton action="#{UserNumberBean.recordTransaction(UserNumberBean.getUserLBody())}"
-                                value="Purchase current bottom accessory"></h:commandButton>
+                                image ="button/purchasebottom.png"></h:commandButton>
        </h:form>
         <br></br>
                        
