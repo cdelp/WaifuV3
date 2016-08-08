@@ -41,11 +41,11 @@ public class AttemptsBean implements Serializable {
         List<Attempts> list = new ArrayList<Attempts>();
 
         ResultSet resInfo = null;
-        //Only shows waifus associated with current username
-        String sqlstatement = "SELECT * FROM WAIFUS WHERE USERNAME = '" + user + "'";
         
         try {
-            ps = con.prepareStatement(sqlstatement);
+            //Only shows waifus associated with current username
+            ps = con.prepareStatement("SELECT * FROM WAIFUS WHERE USERNAME = ?");
+            ps.setString(1, user);
             try { 
                 resInfo = ps.executeQuery();
                 while (resInfo.next()) {
@@ -84,9 +84,10 @@ public class AttemptsBean implements Serializable {
         List<Attempts> list = new ArrayList<Attempts>();
 
         ResultSet resInfo = null;
-        String sqlstatement = "select * from WAIFUS where USERNAME = '" + user + "name = '";
+
         try {
-            ps = con.prepareStatement(sqlstatement);
+            ps = con.prepareStatement("select * from WAIFUS where USERNAME = ?");
+            ps.setString(1, user);
             try {
 
                 resInfo = ps.executeQuery();

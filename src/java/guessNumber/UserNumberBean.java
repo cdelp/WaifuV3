@@ -315,7 +315,8 @@ public class UserNumberBean implements Serializable {
         con = DataConnect.getConnection();
         
         // selects all items owned by the current user
-        ps = con.prepareStatement("SELECT ITEM_ID FROM TRANSACTIONS WHERE USERNAME = '" + user + "'");
+        ps = con.prepareStatement("SELECT ITEM_ID FROM TRANSACTIONS WHERE USERNAME = ?");
+        ps.setString(1, user);
         try {
             
             ResultSet rs = ps.executeQuery();

@@ -97,7 +97,8 @@ public class Login implements Serializable {
                 con = DataConnect.getConnection();  
 
                // checks for user name in DB before allowing it to be added.
-                ps = con.prepareStatement("SELECT USERNAME FROM USERS WHERE USERNAME = '" + user + "'");
+                ps = con.prepareStatement("SELECT USERNAME FROM USERS WHERE USERNAME = ?");
+                ps.setString(1, user);
                 try {
                     //ps.setString(1, user);
 
